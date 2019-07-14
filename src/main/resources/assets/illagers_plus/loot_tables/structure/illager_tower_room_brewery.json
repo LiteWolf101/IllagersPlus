@@ -1,0 +1,66 @@
+{
+  "pools": [
+    {
+      "name": "main",
+      "rolls": {
+        "min": 1,
+        "max": 3
+      },
+      "entries": [
+        {
+          "type": "item",
+          "name": "minecraft:potion",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_nbt",
+              "tag": "{CustomPotionEffects:[{Id:1,Amplifier:1,Duration:1800},{Id:3,Duration:1800},{Id:9,Duration:1800}],CustomPotionColor:15382314,display:{Name:\"\\\"Illager Quick Brew\\\"\"}}"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:splash_potion",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_nbt",
+              "tag": "{CustomPotionEffects:[{Id:14,Duration:3200},{Id:16,Duration:3600},{Id:17,Amplifier:3,Duration:4000},{Id:21,Amplifier:4,Duration:1200},{Id:24,Duration:6400},{Id:26,Amplifier:6,Duration:600}],CustomPotionColor:12057275,display:{Name:\"\\\"Illager Strange Brew\\\"\",Lore:[\"Even I don't know what this is.\"]}}"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:lingering_potion",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "set_nbt",
+              "tag": "{CustomPotionEffects:[{Id:2,Duration:4800},{Id:4,Duration:4800},{Id:7},{Id:9,Duration:4800},{Id:15,Duration:4800},{Id:17,Duration:4800},{Id:18,Duration:4800},{Id:19,Duration:4800},{Id:20,Duration:4800},{Id:25,Duration:4800},{Id:26,Duration:9600}],CustomPotionColor:6636069,display:{Name:\"\\\"Illager Bad Brew\\\"\",Lore:[\"I wouldn't even touch this with a 40-foot pole.\"]}}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "main_2",
+      "rolls": {
+        "min": 1,
+        "max": 3
+      },
+      "entries": [
+        {
+          "type": "item",
+          "name": "minecraft:potion",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_nbt",
+              "tag": "{CustomPotionEffects:[{Id:2,Amplifier:4,Duration:600},{Id:4,Duration:1200},{Id:5,Amplifier:2,Duration:1800},{Id:10,Amplifier:2,Duration:1800},{Id:11,Amplifier:1,Duration:2400}],CustomPotionColor:15996929,display:{Name:\"\\\"Illager Strong Brew\\\"\"}}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
