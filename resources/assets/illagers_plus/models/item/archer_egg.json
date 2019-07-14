@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "illagers_plus:items/archer_spawn_egg"
+  }
+}

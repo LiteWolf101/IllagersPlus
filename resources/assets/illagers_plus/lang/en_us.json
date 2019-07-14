@@ -1,0 +1,29 @@
+{
+  "_comment": "English Lang File for Illagers+ Mod",
+  "_comment": "Use this symbol for colored text:(§)",
+
+  "_comment": "Entity",
+  "entity.illagers_plus.furantur": "Furantur",
+  "entity.illagers_plus.hoarder": "Hoarder",
+  "entity.illagers_plus.necromancer": "Necromancer",
+  "entity.illagers_plus.illager_king": "Illager King",
+  "entity.illagers_plus.enchanter": "Enchanter",
+  "entity.illagers_plus.archer": "Archer",
+
+  "_comment": "Item",
+  "item.illagers_plus.furantur_egg": "Furantur Spawn Egg",
+  "item.illagers_plus.hoarder_egg": "Hoarder Spawn Egg",
+  "item.illagers_plus.necromancer_egg": "Necromancer Spawn Egg",
+  "item.illagers_plus.illager_king_egg": "Illager King Spawn Egg",
+  "item.illagers_plus.enchanter_egg": "Enchanter Spawn Egg",
+  "item.illagers_plus.archer_egg": "Archer Spawn Egg",
+
+  "_comment": "ItemGroup",
+  "itemGroup.illagersPlus": "Illagers+",
+
+  "_comment": "#Config\nconfig.illager_tower_freq.name=Illager Tower Frequency\nconfig.illager_tower_freq.comment=The frequency at which the illager tower spawns. The higher the number, the less likely it spawns. (1 in x chances)",
+  "_comment": "config.illager_archer_tower_freq.name=Illager, Archer Tower Frequency\nconfig.illager_archer_tower_freq.comment=The frequency at which the illager archer tower spawns. The higher the number, the less likely it spawns. (1 in x chances)",
+  "_comment": "config.illager_centre_freq.name=Illager Centre Frequency\nconfig.illager_centre_freq.comment=The frequency at which the illager centre spawns. The higher the number, the less likely it spawns. (1 in x chances)",
+
+  "_comment": "#Config.Gui\ngui.config.illagers_plus.title=Illagers+ Configuration\ngui.config.category.general.name=General\ngui.config.category.general.name.tooltip=General Configuration for Illagers+\ngui.config.category.general.title=Illagers+ General Configuration"
+}

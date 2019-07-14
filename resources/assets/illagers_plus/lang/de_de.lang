@@ -1,0 +1,22 @@
+<<<<<<< HEAD
+#German Lang File for Illagers+ Mod
+#Use this symbol for colored text:(§)
+#Credits - KitsuneAlex
+
+entity.furantur.name=Dieb
+entity.hoarder.name=Sammler
+entity.necromancer.name=Totenbeschwörer
+entity.illager_king.name=Illager König
+entity.enchanter.name=Magier
+=======
+#German Lang File for Illagers+ Mod
+#Use this symbol for colored text:(§)
+#Credits - KitsuneAlex
+
+entity.furantur.name=Dieb
+entity.hoarder.name=Sammler
+entity.necromancer.name=Totenbeschwörer
+entity.illager_king.name=Illager König
+entity.enchanter.name=Magier
+>>>>>>> 1c9f7007d8bd7bb1e64854c133cc06a6d5e52569
+entity.archer.name=Schütze
