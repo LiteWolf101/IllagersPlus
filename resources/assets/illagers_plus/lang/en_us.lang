@@ -1,0 +1,26 @@
+#English Lang File for Illagers+ Mod
+#Use this symbol for colored text:(§)
+
+#Entity
+entity.furantur.name=Furantur
+entity.hoarder.name=Hoarder
+entity.necromancer.name=Necromancer
+entity.illager_king.name=Illager King
+entity.enchanter.name=Enchanter
+entity.archer.name=Archer
+
+#Config
+config.illager_tower_freq.name=Illager Tower Frequency
+config.illager_tower_freq.comment=The frequency at which the illager tower spawns. The higher the number, the less likely it spawns. (1 in x chances)
+
+config.illager_archer_tower_freq.name=Illager Archer Tower Frequency
+config.illager_archer_tower_freq.comment=The frequency at which the illager archer tower spawns. The higher the number, the less likely it spawns. (1 in x chances)
+
+config.illager_centre_freq.name=Illager Centre Frequency
+config.illager_centre_freq.comment=The frequency at which the illager centre spawns. The higher the number, the less likely it spawns. (1 in x chances)
+
+#Config.Gui
+gui.config.illagers_plus.title=Illagers+ Configuration
+gui.config.category.general.name=General
+gui.config.category.general.name.tooltip=General Configuration for Illagers+
+gui.config.category.general.title=Illagers+ General Configuration

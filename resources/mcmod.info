@@ -1,0 +1,16 @@
+[
+  {
+    "modid": "illagers_plus",
+    "name": "Illagers+",
+    "description": "A mod that adds additional Illagers",
+    "version": "1.1",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": ["LiteWolf101"],
+    "credits": "The Forge and FML guys, for making this example",
+    "logoFile": "/assets/logo.png",
+    "screenshots": [],
+    "dependencies": []
+  }
+]

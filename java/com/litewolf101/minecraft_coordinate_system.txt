@@ -1,0 +1,16 @@
+﻿90Deg
+1x, 2z
+-2x,1z
+1)Flip Coords
+2)opposite X
+--
+180Deg
+1x, 2z
+-1x, -2z
+1)Opposite X and Z
+--
+270Deg
+1x, 2z
+2x, -1z
+1)Flip coords
+2)opposite Z
