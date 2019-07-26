@@ -7,23 +7,44 @@ import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.item.SpawnEggItem;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.registries.IForgeRegistry;
 
 public class EntityInit {
     public static Item entity_egg_item;
     //Entities
-    public static EntityType<?> ARCHER = register("archer", EntityType.Builder.create(EntityArcher::new, EntityClassification.MONSTER).size(0.6F, 1.95F));
-    public static EntityType<?> ENCHANTER = register("enchanter", EntityType.Builder.create(EntityEnchanter::new, EntityClassification.MONSTER).size(0.7F, 2F));
-    public static EntityType<?> FURANTUR = register("furantur", EntityType.Builder.create(EntityFurantur::new, EntityClassification.MONSTER).size(0.7F, 2F));
-    public static EntityType<?> HOARDER = register("hoarder", EntityType.Builder.create(EntityHoarder::new, EntityClassification.MONSTER).size(0.7F, 2F));
-    public static EntityType<?> ILLAGER_KING = register("illager_king", EntityType.Builder.create(EntityIllagerKing::new, EntityClassification.MONSTER).size(1f, 4.15f));
-    public static EntityType<?> NECROMANCER = register("necromancer", EntityType.Builder.create(EntityNecromancer::new, EntityClassification.MONSTER).size(0.6F, 1.95F));
+    public static final EntityType<EntityArcher> ARCHER = createEntity(EntityArcher.class, EntityArcher::new, EntityClassification.MONSTER,"archer",0.6F, 1.95F);
+    public static final EntityType<EntityEnchanter> ENCHANTER = createEntity(EntityEnchanter.class, EntityEnchanter::new, EntityClassification.MONSTER,"enchanter",0.7F, 2F);
+    public static final EntityType<EntityFurantur> FURANTUR = createEntity(EntityFurantur.class, EntityFurantur::new, EntityClassification.MONSTER,"furantur",0.7F, 2F);
+    public static final EntityType<EntityHoarder> HOARDER = createEntity(EntityHoarder.class, EntityHoarder::new, EntityClassification.MONSTER,"hoarder",0.7F, 2F);
+    public static final EntityType<EntityIllagerKing> ILLAGER_KING = createEntity(EntityIllagerKing.class, EntityIllagerKing::new, EntityClassification.MONSTER,"illager_king",1F, 4.15F);
+    public static final EntityType<EntityNecromancer> NECROMANCER = createEntity(EntityNecromancer.class, EntityNecromancer::new, EntityClassification.MONSTER,"necromancer",0.6F, 1.95F);
 
+    private static <T extends Entity> EntityType<T> createEntity(Class<T> entityClass, EntityType.IFactory<T> factory, EntityClassification entityClassification, String name, float width, float height) {
+        ResourceLocation location = new ResourceLocation(IllagersPlus.MOD_ID + ":" + name);
 
-    private static <T extends Entity> EntityType<T> register(String key, EntityType.Builder<T> builder) {
-        return (EntityType<T>) Registry.register(Registry.ENTITY_TYPE, key, builder.build(key).setRegistryName(IllagersPlus.MOD_ID, key));
+        EntityType<T> entity = EntityType.Builder.create(factory, entityClassification).size(width, height).build(location.toString());
+        entity.setRegistryName(location);
+
+        return entity;
     }
+
+    @SubscribeEvent
+    public static void registerEntity(IForgeRegistry<EntityType<?>> event) {
+
+        event.register(ARCHER);
+
+    }
+
+    private static String prefix(String path) {
+
+        return IllagersPlus.MOD_ID + "." + path;
+
+    }
+
     //Spawn Eggs
     public static void registerSpawnEggs(final RegistryEvent.Register<Item> event) {
         event.getRegistry().registerAll(

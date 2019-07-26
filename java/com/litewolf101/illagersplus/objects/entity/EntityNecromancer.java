@@ -10,6 +10,9 @@ import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.EvokerFangsEntity;
+import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Direction;
 import net.minecraft.util.SoundEvent;
@@ -136,7 +139,7 @@ public class EntityNecromancer extends EvokerEntity implements INeedIllagerBoost
 
         @Override
         protected int getCastingInterval() {
-            return 340;
+            return 200;
         }
 
         @Override
@@ -152,6 +155,7 @@ public class EntityNecromancer extends EvokerEntity implements INeedIllagerBoost
                 zombie.setLocationAndAngles(zombiepos.getX(), zombiepos.getY() + 1, zombiepos.getZ(), EntityNecromancer.this.rotationYaw, EntityNecromancer.this.rotationPitch);
                 zombie.setCustomName(new StringTextComponent(Name));
                 zombie.setCustomNameVisible(true);
+                zombie.setItemStackToSlot(EquipmentSlotType.HEAD, new ItemStack(Items.LEATHER_HELMET));
                 EntityNecromancer.this.world.addEntity(zombie);
                 /*if (EntityNecromancer.this.rand.nextInt(10) == 1) {
                     zombieVillager.setProfession(EntityNecromancer.this.rand.nextInt(5));
@@ -217,12 +221,12 @@ public class EntityNecromancer extends EvokerEntity implements INeedIllagerBoost
 
         protected int getCastingTime()
         {
-            return 40;
+            return 20;
         }
 
         protected int getCastingInterval()
         {
-            return 100;
+            return 50;
         }
 
         protected void castSpell()

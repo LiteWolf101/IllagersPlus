@@ -5,6 +5,7 @@ import com.litewolf101.illagersplus.utils.IllagerPlusLootTable;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
+import net.minecraft.entity.monster.AbstractIllagerEntity;
 import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
@@ -32,13 +33,11 @@ import javax.annotation.Nullable;
 
 
 public class EntityArcher extends EntityAbstractIllagerPlus implements IRangedAttackMob, INeedIllagerBoost {
-    protected static final DataParameter<Byte> AGGRESSIVE = EntityDataManager.<Byte>createKey(EntityArcher.class, DataSerializers.BYTE);
 
     @SuppressWarnings("unchecked")
     public EntityArcher(EntityType<? extends EntityArcher> type, World world) {
         super(type, world);
         this.experienceValue = 5;
-        this.dataManager.register(AGGRESSIVE, Byte.valueOf((byte)0));
     }
 
     @Override
@@ -124,33 +123,5 @@ public class EntityArcher extends EntityAbstractIllagerPlus implements IRangedAt
         abstractarrowentity.shoot(d0, d1 + d3 * (double)0.2F, d2, 1.6F, (float)(14 - this.world.getDifficulty().getId() * 4));
         this.playSound(SoundEvents.ENTITY_SKELETON_SHOOT, 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
         this.world.addEntity(abstractarrowentity);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    protected boolean isAggressive(int mask)
-    {
-        int i = ((Byte)this.dataManager.get(AGGRESSIVE)).byteValue();
-        return (i & mask) != 0;
-    }
-
-    protected void setAggressive(int mask, boolean value)
-    {
-        int i = ((Byte)this.dataManager.get(AGGRESSIVE)).byteValue();
-
-        if (value)
-        {
-            i = i | mask;
-        }
-        else
-        {
-            i = i & ~mask;
-        }
-
-        this.dataManager.set(AGGRESSIVE, Byte.valueOf((byte)(i & 255)));
-    }
-
-    public void setSwingingArms(boolean swingingArms)
-    {
-        this.setAggressive(1, swingingArms);
     }
 }

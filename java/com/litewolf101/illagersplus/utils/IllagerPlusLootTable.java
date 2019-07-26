@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class IllagerPlusLootTable extends LootTables {
     private static final Set<ResourceLocation> ILLAGERS_PLUS_LOOT_TABLES = Sets.newHashSet();
-    //Structures
+    //structures
     public static final ResourceLocation ILLAGER_TOWER_COMMON = register("structure/illager_tower_common");
     public static final ResourceLocation ILLAGER_TOWER_UNCOMMON = register("structure/illager_tower_uncommon");
     public static final ResourceLocation ILLAGER_TOWER_RARE = register("structure/illager_tower_rare");
