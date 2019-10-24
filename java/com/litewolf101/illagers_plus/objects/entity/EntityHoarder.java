@@ -66,10 +66,9 @@ public class EntityHoarder extends EntityAbstractIllagerPlus implements INeedIll
 
     @Override
     public void livingTick() {
-        List<ItemEntity> list = this.world.getEntitiesWithinAABB(ItemEntity.class, new AxisAlignedBB(this.posX - 0.3, this.posY, this.posZ - 0.3, this.posX + 0.3, this.posY + 0.1, this.posZ + 0.3));
+        List<ItemEntity> list = this.world.getEntitiesWithinAABB(ItemEntity.class, new AxisAlignedBB(this.posX - 1, this.posY, this.posZ - 1, this.posX + 1, this.posY + 0.1, this.posZ + 1));
 
         if (!this.dead && this.deathTime < 1) {
-
             if (!list.isEmpty() && !isInventoryFull()) {
                 for (int i = 0; i < list.size(); ++i) {
                     ItemEntity entity = list.get(i);

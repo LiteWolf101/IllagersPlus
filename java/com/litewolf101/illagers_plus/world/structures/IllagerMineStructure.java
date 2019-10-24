@@ -1,13 +1,12 @@
 package com.litewolf101.illagers_plus.world.structures;
 
 import com.google.common.collect.Lists;
-import com.litewolf101.illagers_plus.init.EntityInit;
-import com.litewolf101.illagers_plus.world.StructureRegistry;
-import com.litewolf101.illagers_plus.world.pieces.IllagerArcherTowerPieces;
+import com.litewolf101.illagers_plus.world.pieces.IllagerMinePieces;
+import com.litewolf101.illagers_plus.world.structureConfig.IllagerMineConfig;
+import com.litewolf101.illagers_plus.world.test.MockPillagerOutpostConfig;
+import com.litewolf101.illagers_plus.world.test.MockPillagerOutpostPieces;
 import com.mojang.datafixers.Dynamic;
 import net.minecraft.entity.EntityType;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.Rotation;
 import net.minecraft.util.SharedSeedRandom;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
@@ -15,25 +14,32 @@ import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.NoFeatureConfig;
-import net.minecraft.world.gen.feature.structure.*;
+import net.minecraft.world.gen.feature.structure.MarginedStructureStart;
+import net.minecraft.world.gen.feature.structure.ScatteredStructure;
+import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.feature.template.TemplateManager;
 
 import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
 
-public class IllagerArcherTowerStructure extends ScatteredStructure<NoFeatureConfig> {
-    public IllagerArcherTowerStructure(Function<Dynamic<?>, ? extends NoFeatureConfig> p_i51470_1_) {
+public class IllagerMineStructure extends ScatteredStructure<IllagerMineConfig> {
+    private static final List<Biome.SpawnListEntry> field_214558_a = Lists.newArrayList(new Biome.SpawnListEntry(EntityType.PILLAGER, 1, 1, 1));
+
+    public IllagerMineStructure(Function<Dynamic<?>, ? extends IllagerMineConfig> p_i51470_1_) {
         super(p_i51470_1_);
     }
 
     public String getStructureName() {
-        return "Illager_Archer_Tower";
+        return "Illager_Mine";
     }
 
     public int getSize() {
-        return 3;
+        return 8;
+    }
+
+    public List<Biome.SpawnListEntry> getSpawnList() {
+        return field_214558_a;
     }
 
     protected ChunkPos getStartPositionForPosition(ChunkGenerator<?> chunkGenerator, Random random, int x, int z, int spacingOffsetsX, int spacingOffsetsZ) {
@@ -63,12 +69,12 @@ public class IllagerArcherTowerStructure extends ScatteredStructure<NoFeatureCon
         }
     }
 
-    public Structure.IStartFactory getStartFactory() {
-        return IllagerArcherTowerStructure.Start::new;
+    public IStartFactory getStartFactory() {
+        return IllagerMineStructure.Start::new;
     }
 
     protected int getSeedModifier() {
-        return 145627134;
+        return 129929813;
     }
 
     public static class Start extends MarginedStructureStart {
@@ -78,8 +84,8 @@ public class IllagerArcherTowerStructure extends ScatteredStructure<NoFeatureCon
 
         public void init(ChunkGenerator<?> generator, TemplateManager templateManagerIn, int chunkX, int chunkZ, Biome biomeIn) {
             BlockPos blockpos = new BlockPos(chunkX * 16, 90, chunkZ * 16);
-            //System.out.println(blockpos);
-            IllagerArcherTowerPieces.addTowerPieces(templateManagerIn, blockpos, Rotation.NONE, this.components, this.rand);
+            System.out.println(blockpos);
+            IllagerMinePieces.generateMine(generator, templateManagerIn, blockpos, this.components, this.rand);
             this.recalculateStructureSize();
         }
     }

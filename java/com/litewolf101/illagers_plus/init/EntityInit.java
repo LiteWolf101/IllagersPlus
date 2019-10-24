@@ -21,17 +21,18 @@ import net.minecraftforge.registries.ObjectHolder;
 import java.util.List;
 
 @Mod.EventBusSubscriber(modid = IllagersPlus.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
-//@ObjectHolder(IllagersPlus.MOD_ID)
 @SuppressWarnings("rawtypes")
 public class EntityInit {
+    public static Item entity_egg_item;
     private static List<EntityType> ENTITIES = Lists.newArrayList();
-    private static List<Item> SPAWN_EGGS = Lists.newArrayList();
+    //private static List<Item> SPAWN_EGGS = Lists.newArrayList();
 
     public static final EntityType<EntityArcher> ARCHER = createEntity(EntityArcher.class, EntityArcher::new, EntityClassification.MONSTER, "archer", 0.6F, 1.95F, 9804699, 1973274);
     public static final EntityType<EntityEnchanter> ENCHANTER = createEntity(EntityEnchanter.class, EntityEnchanter::new, EntityClassification.MONSTER, "enchanter", 0.7F, 2F, 9804699, 1120750);
     public static final EntityType<EntityFurantur> FURANTUR = createEntity(EntityFurantur.class, EntityFurantur::new, EntityClassification.MONSTER, "furantur", 0.7F, 2F, 9804699, 1855266);
     public static final EntityType<EntityHoarder> HOARDER = createEntity(EntityHoarder.class, EntityHoarder::new, EntityClassification.MONSTER, "hoarder", 0.7F, 2F, 9804699, 7158918);
     public static final EntityType<EntityIllagerKing> ILLAGER_KING = createEntity(EntityIllagerKing.class, EntityIllagerKing::new, EntityClassification.MONSTER, "illager_king", 1.65F, 4F, 9804699, 15787008);
+    public static final EntityType<EntityMiner> MINER = createEntity(EntityMiner.class, EntityMiner::new, EntityClassification.MONSTER, "miner", 0.6F, 1.95F, 0, 0);
     public static final EntityType<EntityNecromancer> NECROMANCER = createEntity(EntityNecromancer.class, EntityNecromancer::new, EntityClassification.MONSTER, "necromancer", 0.7F, 2F, 9804699, 0);
 
 
@@ -45,7 +46,7 @@ public class EntityInit {
                 .build(location.toString());
         entity.setRegistryName(location);
         ENTITIES.add(entity);
-        SPAWN_EGGS.add(createSpawnEggForEntity(entity, eggPrimary, eggSecondary, IllagersPlus.ILLAGERS_PLUS));
+        //SPAWN_EGGS.add(createSpawnEggForEntity(entity, eggPrimary, eggSecondary, IllagersPlus.ILLAGERS_PLUS));
         return entity;
     }
 
@@ -58,7 +59,32 @@ public class EntityInit {
         //EntitySpawnPlacementRegistry.register(ARCHER, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::func_223325_c);
     }
 
+    //Spawn Eggs
     @SubscribeEvent
+    public static void registerSpawnEggs(final RegistryEvent.Register<Item> event) {
+        event.getRegistry().registerAll(
+                entity_egg_item = registerSpawnEgg(ARCHER, "archer", 9804699, 1973274),
+                entity_egg_item = registerSpawnEgg(ENCHANTER, "enchanter", 9804699, 1120750),
+                entity_egg_item = registerSpawnEgg(FURANTUR, "furantur", 9804699, 1855266),
+                entity_egg_item = registerSpawnEgg(HOARDER, "hoarder", 9804699, 7158918),
+                entity_egg_item = registerSpawnEgg(ILLAGER_KING, "illager_king", 9804699, 15787008),
+                entity_egg_item = registerSpawnEgg(MINER, "miner", 0, 0),
+                entity_egg_item = registerSpawnEgg(NECROMANCER, "necromancer", 9804699, 0)
+        );
+
+    }
+
+    public static Item registerSpawnEgg(EntityType<?> entityType, String name, int primaryClr, int secondaryClr){
+        SpawnEggItem egg = new SpawnEggItem(entityType, primaryClr, secondaryClr, new Item.Properties().group(IllagersPlus.ILLAGERS_PLUS));
+        egg.setRegistryName(IllagersPlus.MOD_ID, name + "_egg");
+
+        return egg;
+    }
+
+
+
+
+    /*@SubscribeEvent
     public static void registerSpawnEggs(RegistryEvent.Register<Item> event) {
         for (Item spawnEgg : SPAWN_EGGS) {
             event.getRegistry().register(spawnEgg);
@@ -67,7 +93,7 @@ public class EntityInit {
 
     public static Item createSpawnEggForEntity(@SuppressWarnings("rawtypes") EntityType entityType, int eggColor1, int eggColor2, net.minecraft.item.ItemGroup itemGroup) {
         return new SpawnEggItem(entityType, eggColor1, eggColor2, new Item.Properties().group(itemGroup)).setRegistryName(entityType.getRegistryName() + "_spawn_egg");
-    }
+    }*/
 
 
 
@@ -170,25 +196,5 @@ public class EntityInit {
 
         return IllagersPlus.MOD_ID + "." + path;
 
-    }
-
-    //Spawn Eggs
-    public static void registerSpawnEggs(final RegistryEvent.Register<Item> event) {
-        event.getRegistry().registerAll(
-                entity_egg_item = registerSpawnEgg(ARCHER, "archer", 9804699, 1973274),
-                entity_egg_item = registerSpawnEgg(ENCHANTER, "enchanter", 9804699, 1120750),
-                entity_egg_item = registerSpawnEgg(FURANTUR, "furantur", 9804699, 1855266),
-                entity_egg_item = registerSpawnEgg(HOARDER, "hoarder", 9804699, 7158918),
-                entity_egg_item = registerSpawnEgg(ILLAGER_KING, "illager_king", 9804699, 15787008),
-                entity_egg_item = registerSpawnEgg(NECROMANCER, "necromancer", 9804699, 0)
-        );
-
-    }
-
-    public static Item registerSpawnEgg(EntityType<?> entityType, String name, int primaryClr, int secondaryClr){
-        SpawnEggItem egg = new SpawnEggItem(entityType, primaryClr, secondaryClr, new Item.Properties().group(IllagersPlus.ILLAGERS_PLUS));
-        egg.setRegistryName(IllagersPlus.MOD_ID, name + "_egg");
-
-        return egg;
     }*/
 }

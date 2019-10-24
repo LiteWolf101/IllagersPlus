@@ -56,6 +56,8 @@ public class IllagersPlus {
             AddBiomeDecoConfig.addIllagerArcherTower(Biomes.DESERT);
             AddBiomeDecoConfig.addIllagerArcherTower(Biomes.SNOWY_TUNDRA);
 
+            AddBiomeDecoConfig.addIllagerMine(Biomes.PLAINS);
+
             //Tower is too big, has too many chunk issues. TODO: break up structure into 4 parts or shrink it
             //AddBiomeDecoConfig.addIllagerTower(Biomes.PLAINS);
             //AddBiomeDecoConfig.addIllagerTower(Biomes.DARK_FOREST);

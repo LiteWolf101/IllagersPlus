@@ -13,6 +13,7 @@ public class RenderRegistry {
         RenderingRegistry.registerEntityRenderingHandler(EntityFurantur.class, new RenderEntityFurantur.RenderFactory());
         RenderingRegistry.registerEntityRenderingHandler(EntityHoarder.class, new RenderEntityHoarder.RenderFactory());
         RenderingRegistry.registerEntityRenderingHandler(EntityIllagerKing.class, new RenderEntityIllagerKing.RenderFactory());
+        RenderingRegistry.registerEntityRenderingHandler(EntityMiner.class, new RenderEntityMiner.RenderFactory());
         RenderingRegistry.registerEntityRenderingHandler(EntityNecromancer.class, new RenderEntityNecromancer.RenderFactory());
     }
 }

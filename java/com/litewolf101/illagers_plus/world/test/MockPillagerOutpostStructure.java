@@ -1,21 +1,14 @@
-package com.litewolf101.illagers_plus.world.structures;
+package com.litewolf101.illagers_plus.world.test;
 
 import com.google.common.collect.Lists;
-import com.litewolf101.illagers_plus.init.EntityInit;
-import com.litewolf101.illagers_plus.world.StructureRegistry;
-import com.litewolf101.illagers_plus.world.pieces.IllagerArcherTowerPieces;
 import com.mojang.datafixers.Dynamic;
 import net.minecraft.entity.EntityType;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.Rotation;
-import net.minecraft.util.SharedSeedRandom;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.structure.*;
 import net.minecraft.world.gen.feature.template.TemplateManager;
 
@@ -23,52 +16,59 @@ import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
 
-public class IllagerArcherTowerStructure extends ScatteredStructure<NoFeatureConfig> {
-    public IllagerArcherTowerStructure(Function<Dynamic<?>, ? extends NoFeatureConfig> p_i51470_1_) {
+public class MockPillagerOutpostStructure extends ScatteredStructure<MockPillagerOutpostConfig> {
+    private static final List<Biome.SpawnListEntry> field_214558_a = Lists.newArrayList(new Biome.SpawnListEntry(EntityType.PILLAGER, 1, 1, 1));
+
+    public MockPillagerOutpostStructure(Function<Dynamic<?>, ? extends MockPillagerOutpostConfig> p_i51470_1_) {
         super(p_i51470_1_);
     }
 
     public String getStructureName() {
-        return "Illager_Archer_Tower";
+        return "Mock_Pillager_Outpost";
     }
 
     public int getSize() {
         return 3;
     }
 
-    protected ChunkPos getStartPositionForPosition(ChunkGenerator<?> chunkGenerator, Random random, int x, int z, int spacingOffsetsX, int spacingOffsetsZ) {
-        int i = 40;
-        int j = 20;
-        int k = x + i * spacingOffsetsX;
-        int l = z + i * spacingOffsetsZ;
-        int i1 = k < 0 ? k - i + 1 : k;
-        int j1 = l < 0 ? l - i + 1 : l;
-        int k1 = i1 / i;
-        int l1 = j1 / i;
-        ((SharedSeedRandom)random).setLargeFeatureSeedWithSalt(chunkGenerator.getSeed(), k1, l1, 10387319);
-        k1 = k1 * i;
-        l1 = l1 * i;
-        k1 = k1 + (random.nextInt(i - j) + random.nextInt(i - j)) / 2;
-        l1 = l1 + (random.nextInt(i - j) + random.nextInt(i - j)) / 2;
-        return new ChunkPos(k1, l1);
+    public List<Biome.SpawnListEntry> getSpawnList() {
+        return field_214558_a;
     }
 
     public boolean hasStartAt(ChunkGenerator<?> chunkGen, Random rand, int chunkPosX, int chunkPosZ) {
         ChunkPos chunkpos = this.getStartPositionForPosition(chunkGen, rand, chunkPosX, chunkPosZ, 0, 0);
         if (chunkPosX == chunkpos.x && chunkPosZ == chunkpos.z) {
+            int i = chunkPosX >> 4;
+            int j = chunkPosZ >> 4;
+            rand.setSeed((long)(i ^ j << 4) ^ chunkGen.getSeed());
+            rand.nextInt();
+            if (rand.nextInt(5) != 0) {
+                return false;
+            }
 
-            return true;
-        } else {
-            return false;
+            Biome biome = chunkGen.getBiomeProvider().getBiome(new BlockPos((chunkPosX << 4) + 9, 0, (chunkPosZ << 4) + 9));
+            if (chunkGen.hasStructure(biome, Feature.PILLAGER_OUTPOST)) {
+                for(int k = chunkPosX - 10; k <= chunkPosX + 10; ++k) {
+                    for(int l = chunkPosZ - 10; l <= chunkPosZ + 10; ++l) {
+                        if (Feature.VILLAGE.hasStartAt(chunkGen, rand, k, l)) {
+                            return false;
+                        }
+                    }
+                }
+
+                return true;
+            }
         }
+
+        return false;
     }
 
     public Structure.IStartFactory getStartFactory() {
-        return IllagerArcherTowerStructure.Start::new;
+        return MockPillagerOutpostStructure.Start::new;
     }
 
     protected int getSeedModifier() {
-        return 145627134;
+        return 165745296;
     }
 
     public static class Start extends MarginedStructureStart {
@@ -78,8 +78,8 @@ public class IllagerArcherTowerStructure extends ScatteredStructure<NoFeatureCon
 
         public void init(ChunkGenerator<?> generator, TemplateManager templateManagerIn, int chunkX, int chunkZ, Biome biomeIn) {
             BlockPos blockpos = new BlockPos(chunkX * 16, 90, chunkZ * 16);
-            //System.out.println(blockpos);
-            IllagerArcherTowerPieces.addTowerPieces(templateManagerIn, blockpos, Rotation.NONE, this.components, this.rand);
+            System.out.println(blockpos);
+            MockPillagerOutpostPieces.func_215139_a(generator, templateManagerIn, blockpos, this.components, this.rand);
             this.recalculateStructureSize();
         }
     }
