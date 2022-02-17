@@ -1,10 +1,57 @@
 {
-  "homepage": "https://www.curseforge.com/minecraft/mc-mods/illagers",
-  "1.16.5": {
-    "1.16.4v1.7.2": "fixed server crashing when playing sound hopefully"
-  },
+  "homepage": "https://www.curseforge.com/minecraft/mc-mods/corail-tombstone",
   "promos": {
-    "1.16.4-latest": "1.16.4v1.7.2",
-    "1.16.4-recommended": "1.16.4v1.7.2"
+    "1.18.1-latest": "7.4.1",
+    "1.18.1-recommended": "7.4.1",
+    "1.17.1-latest": "7.3.0",
+    "1.17.1-recommended": "7.3.0",
+    "1.16.5-latest": "6.7.3",
+    "1.16.5-recommended": "6.7.3",
+    "1.15.2-latest": "4.6.0",
+    "1.15.2-recommended": "4.6.0",
+    "1.14.4-latest": "4.3.6",
+    "1.14.4-recommended": "4.3.6",
+    "1.13.2-latest": "3.5.2",
+    "1.13.2-recommended": "3.5.2",
+    "1.12.2-latest": "4.5.3",
+    "1.12.2-recommended": "4.5.3",
+    "1.11.2-latest": "2.9.0.1",
+    "1.11.2-recommended": "2.9.0.1",
+    "1.10.2-latest": "2.9.4",
+    "1.10.2-recommended": "2.9.4",
+    "1.9.4-latest": "1.4.1",
+    "1.9.4-recommended": "1.4.1",
+    "1.8.9-latest": "1.4.1",
+    "1.8.9-recommended": "1.4.1"
+  },
+  "1.18.1": {
+    "7.4.1": "reset perks & fix #44",
+    "7.4.0": "prayers & reach",
+    "7.3.8": "particle & compat",
+    "7.3.7": "compat with forge",
+    "7.3.6": "about particle",
+    "7.3.5": "improvements & fix",
+    "7.3.4": "about combine in inventory",
+    "7.3.3": "improvements",
+    "7.3.2": "see changelog",
+    "7.3.1": "mixin hooks & fix",
+    "7.3.0": "initial port"
+  },
+  "1.17.1": {
+    "7.3.0": "final version"
+  },
+  "1.16.5": {
+    "6.7.3": "prayers & fix #44",
+    "6.7.2": "particles & fix #36",
+    "6.7.1": "improvements",
+    "6.6.3": "see changelog",
+    "6.6.2": "new book variants & compat"
+  },
+  "1.12.2": {
+    "4.5.3": "fixes & improvements",
+    "4.5.2": "see changelog",
+    "4.5.1": "improvements",
+    "4.5.0": "see changelog",
+    "4.4.7": "fix restored experience"
   }
 }
