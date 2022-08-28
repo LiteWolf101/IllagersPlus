@@ -1,5 +1,7 @@
 <h1>Illagers+</h1>
 
+<h2>You will no longer be able to find up-to-date code on this repo anymore. Please head on over to https://git.karmakrafts.dev/kk/mc-projects/illagersplus</h2>
+
 <p>Illagers+ is a mod that adds additional illagers to the game. These illagers spawn in randomly generated structures throughout the world.
 <br>
 Join the project's discord down below!
